@@ -1,0 +1,9 @@
+
+nft add table filter
+nft add chain ip filter INPUT '{type filter hook input priority 0; policy accept;}'
+nft add rule ip filter INPUT tcp dport {31337} counter drop comment "porthide-31337-drop"
+nft insert rule ip filter INPUT tcp dport {31337} counter accept comment "porthide-31337-accept"
+
+nft list ruleset
+
+nft delete rule ip filter INPUT handle XXX
